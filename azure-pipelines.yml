@@ -1,12 +1,7 @@
+pool:
+  vmImage: 'ubuntu-latest' # other options: 'macOS-latest', 'windows-latest'
 steps:
-- task: Gradle@2
-  inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: 'default'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+- script: |
+    echo Starting the build
+    mvn package
+  displayName: 'Build with Maven'
